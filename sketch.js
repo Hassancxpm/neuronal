@@ -22,7 +22,13 @@ function centerCanvas() {
 
 function setup() {
   cnv = createCanvas(320, 240);
-  video = createCapture(VIDEO);
+  let constraints = {
+    audio: false,
+    video: {
+      facingMode: "environment"
+    }
+  };
+  video = createCapture(constraints);
   video.size(320, 240);
   centerCanvas();
 
