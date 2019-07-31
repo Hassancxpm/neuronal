@@ -11,19 +11,31 @@ Real time Object Detection using YOLO and p5.js
 let video;
 let yolo;
 let status;
+let cnv;
 let objects = [];
 
+function centerCanvas() {
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+}
+
 function setup() {
-  createCanvas(document.body.clientWidth, document.body.clientHeight);
+  cnv = createCanvas(320, 240);
   video = createCapture(VIDEO);
-  video.size(document.body.clientWidth, document.body.clientHeight);
+  video.size(320, 240);
+  centerCanvas();
 
   // Create a YOLO method
   yolo = ml5.YOLO(video, startDetecting);
 
   // Hide the original video
   video.hide();
-  status = select('#status');
+  status = select("#status");
+}
+
+function windowResized() {
+  centerCanvas();
 }
 
 function draw() {
