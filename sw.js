@@ -7,7 +7,8 @@ self.addEventListener("install", e => {
         .addAll([
           `/`,
           `/index.html`,
-          `/sketch.js`
+          `/sketch.js`,
+          `/favicon.png`
         ])
         .then(() => self.skipWaiting());
     })
